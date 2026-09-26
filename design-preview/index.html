@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-site-verification" content="GlkDu5ZL-CyyKjwPSj9d9X3Y2qsHUj_qAwRwxiLr7nI">
-<meta name="robots" content="index,follow">
-<title>Recent Floods Near Me — Live Flood Updates, Alerts & Safety India</title>
-<meta name="description" content="Current floods in India: active situations, state alerts, helplines and safety. Updated as situations develop.">
-<link rel="canonical" href="https://floodsnearme.pages.dev/">
+<meta name="robots" content="noindex,nofollow">
+<title>Design Preview B — Recent Floods Near Me</title>
+<meta name="description" content="Design sample B for internal review.">
+<link rel="canonical" href="https://floodsnearme.pages.dev/design-preview/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<meta property="og:title" content="Recent Floods Near Me — Live Flood Updates, Alerts & Safety India">
-<meta property="og:description" content="Current floods in India: active situations, state alerts, helplines and safety. Updated as situations develop.">
+<meta property="og:title" content="Design Preview B — Recent Floods Near Me">
+<meta property="og:description" content="Design sample B for internal review.">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.55}
@@ -23,40 +23,42 @@ li{margin:4px 0}
 table{width:100%;border-collapse:collapse;font-size:.88rem;margin:10px 0}
 footer{margin-top:28px;padding:16px;border-top:1px solid #cbd5e1;font-size:.75rem;color:#64748b}
 
-body{background:#f6f9fc;color:#1e293b}
-.topbar{background:#fff;border-bottom:1px solid #dbe7f0;padding:12px 16px;display:flex;align-items:center;gap:10px}
-.topbar .mark{width:34px;height:34px}
-.topbar b{font-size:1.02rem;color:#0c4a6e}
-.topbar .chip{margin-left:auto;font-size:.72rem;font-weight:700;color:#0369a1;background:#e0f2fe;border:1px solid #bae6fd;padding:4px 10px;border-radius:99px}
-.hero{background:#fff;border:1px solid #dbe7f0;border-left:4px solid #dc2626;border-radius:12px;padding:16px;margin:16px 0}
-.hero h1{font-size:1.15rem;color:#7f1d1d}
-.hero p{margin-top:6px;color:#334155}
-.hero a{font-weight:700}
-.helpline{background:#0c4a6e;border-radius:14px;padding:18px;margin:16px 0;text-align:center;color:#fff}
-.helpline .n{font-size:2.4rem;font-weight:800;letter-spacing:2px}
-.helpline .l{font-size:.8rem;color:#bae6fd}
-.card{background:#fff;border:1px solid #dbe7f0;border-radius:12px;padding:14px;margin:12px 0}
-.card h2{font-size:1rem;color:#0c4a6e;margin-bottom:8px}
+body{background:#fff;color:#1a1a1a}
+.masthead{background:#b91c1c;color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.masthead b{font-size:1.05rem;letter-spacing:.5px}
+.masthead .mark{width:30px;height:30px}
+.masthead .chip{margin-left:auto;font-size:.7rem;font-weight:700;background:#fff;color:#b91c1c;padding:3px 10px;border-radius:4px}
+.datebar{background:#f7f2f2;border-bottom:2px solid #b91c1c;padding:6px 16px;font-size:.75rem;color:#7f1d1d;display:flex;justify-content:space-between}
+.hero{border:1px solid #d6d3d1;border-top:3px solid #b91c1c;margin:16px 0;background:#fef2f2;padding:16px}
+.hero h1{font-family:Georgia,'Times New Roman',serif;font-size:1.45rem;color:#7f1d1d}
+.hero p{margin-top:8px;color:#44403c}
+.helpline{background:#111;border-radius:0;padding:16px;margin:16px 0;text-align:center;color:#fff;border-left:5px solid #b91c1c}
+.helpline .n{font-size:2.4rem;font-weight:800;letter-spacing:2px;color:#fca5a5}
+.helpline .l{font-size:.78rem;color:#d4d4d4}
+.card{border:1px solid #d6d3d1;padding:14px;margin:12px 0}
+.card h2{font-family:Georgia,serif;font-size:1.1rem;color:#111;margin-bottom:8px;border-bottom:2px solid #b91c1c;display:inline-block;padding-bottom:2px}
+h3{font-family:Georgia,serif;color:#7f1d1d;border-bottom:1px solid #d6d3d1;padding-bottom:4px}
 .state-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:8px}
-.state{border:1px solid #dbe7f0;border-radius:10px;padding:8px 10px;font-size:.85rem;font-weight:600;color:#0c4a6e;background:#f6f9fc}
-.state.alert{border-color:#f59e0b;background:#fffbeb;color:#92400e}
-.gdacs-item{border-left:3px solid #f59e0b;background:#fff;border:1px solid #e2e8f0;border-radius:0 10px 10px 0;padding:8px 12px;margin:8px 0;font-size:.9rem}
-.stamp{font-size:.75rem;color:#64748b}
+.state{border:1px solid #d6d3d1;padding:8px 10px;font-size:.85rem;font-weight:700;color:#1f2937}
+.state.alert{border-color:#b91c1c;background:#fef2f2;color:#991b1b}
+.gdacs-item{border-left:4px solid #b91c1c;background:#fafaf9;padding:8px 12px;margin:8px 0;font-size:.9rem;border-top:1px solid #e7e5e4;border-right:1px solid #e7e5e4;border-bottom:1px solid #e7e5e4}
+.stamp{font-size:.75rem;color:#78716c}
 .safety-strip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:14px 0}
-.safety-strip .s{background:#fff;border:1px solid #dbe7f0;border-top:4px solid #0369a1;border-radius:12px;padding:12px;text-align:center;font-size:.8rem;font-weight:600;color:#0c4a6e}
-h3{color:#0369a1}
-.warn{background:#fff;border:1px solid #dbe7f0;border-left:4px solid #dc2626;border-radius:12px;padding:14px;margin:14px 0}
-.warn h2{color:#7f1d1d;font-size:1rem;margin-bottom:8px}
-.helpline-box{background:rgba(2,102,161,.06);border:1px solid #bae6fd;border-radius:12px;padding:14px;margin:14px 0}
-.helpline-box b{color:#0c4a6e}
+.safety-strip .s{border:1px solid #d6d3d1;border-top:4px solid #b91c1c;padding:12px;text-align:center;font-size:.8rem;font-weight:700}
+.warn{border:1px solid #d6d3d1;border-top:3px solid #b91c1c;padding:14px;margin:14px 0;background:#fff}
+.warn h2{font-family:Georgia,serif;color:#991b1b;margin-bottom:8px;font-size:1.1rem}
+.helpline-box{background:#fff7ed;border:1px solid #fdba74;padding:14px;margin:14px 0}
+.helpline-box b{color:#9a3412}
+a{color:#b91c1c}
 </style>
 </head>
 <body>
-<div class="topbar">
+<div class="masthead">
   <img class="mark" src="/logo.svg" alt="Recent Floods Near Me logo">
-  <b>Recent Floods Near Me</b>
-  <span class="chip">India</span>
+  <b>RECENT FLOODS NEAR ME</b>
+  <span class="chip">INDIA</span>
 </div>
+<div class="datebar"><span>Saturday, 26 September 2026</span><span>Verified information only</span></div>
 <div class="wrap">
 
 <div class="hero">

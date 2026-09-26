@@ -1,3 +1,4 @@
 User-agent: *
+Disallow: /design-preview/
 Allow: /
 Sitemap: https://floodsnearme.pages.dev/sitemap.xml
