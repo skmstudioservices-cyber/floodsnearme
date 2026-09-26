@@ -1,0 +1,44 @@
+name: Update GDACS Flood Alerts
+
+on:
+  schedule:
+    - cron: '33 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch GDACS RSS (South Asia floods)
+        run: |
+          python3 - <<'PY'
+import re, json, urllib.request, datetime
+try:
+    xml = urllib.request.urlopen('https://www.gdacs.org/xml/rss.xml', timeout=40).read().decode('utf-8','ignore')
+except Exception as e:
+    print('gdacs fetch failed:', e); raise SystemExit(0)
+items = re.findall(r'<item>(.*?)</item>', xml, re.S)
+south_asia = ['India','Nepal','Bangladesh','Pakistan','Bhutan','Sri Lanka']
+out = []
+for it in items:
+    if 'lood' not in it: continue
+    t = re.search(r'<title>(.*?)</title>', it, re.S)
+    if not t: continue
+    title = t.group(1).strip()
+    if not any(c in title for c in south_asia): continue
+    l = re.search(r'<link>(.*?)</link>', it, re.S)
+    p = re.search(r'<pubDate>(.*?)</pubDate>', it, re.S)
+    out.append({"title": title, "link": l.group(1).strip() if l else "", "pubdate": p.group(1).strip() if p else ""})
+data = {"last_updated": datetime.datetime.now().strftime('%d %b %Y %H:%M IST'), "items": out}
+open('gdacs-data.json','w').write(json.dumps(data, ensure_ascii=False))
+print('south-asia flood alerts:', len(out))
+PY
+      - name: Commit if changed
+        run: |
+          if git diff --quiet; then echo "no changes"; else
+            git config user.name "gdacs-bot"; git config user.email "actions@github.com"
+            git add -A; git commit -m "data: gdacs flood alerts refresh" && git push
+          fi
