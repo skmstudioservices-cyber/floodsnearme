@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="GlkDu5ZL-CyyKjwPSj9d9X3Y2qsHUj_qAwRwxiLr7nI">
+<title>Recent Floods Near Me — Live Flood Updates, Alerts & Safety Info India</title>
+<meta name="description" content="Recent and current floods in India: live updates, affected areas, school closures, helpline numbers and flood safety guidance. Updated as situations develop.">
+<link rel="canonical" href="https://floodsnearme.pages.dev/">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:#0c1220;color:#e8ecf7;line-height:1.55}
+.wrap{max-width:900px;margin:0 auto;padding:16px}
+header{background:linear-gradient(135deg,#0e2033,#123a5c);border-bottom:3px solid #38bdf8;padding:18px 16px;text-align:center}
+header h1{font-size:1.3rem}
+header .sub{color:#9fc3e0;font-size:.85rem;margin-top:6px}
+.active{background:rgba(225,29,72,.12);border:1px solid #e11d48;border-radius:12px;padding:14px;margin:16px 0}
+.active h2{color:#fb7185;font-size:1.02rem}
+.card{background:#101a2e;border:1px solid #1f3355;border-radius:12px;padding:14px;margin:14px 0}
+h3{margin:20px 0 8px;font-size:1rem;color:#38bdf8}
+p{font-size:.93rem;color:#c4cfe8}
+.helpline{background:rgba(56,189,248,.08);border:1px solid #2a5a80;border-radius:12px;padding:14px;margin:14px 0}
+.helpline b{color:#7dd3fc}
+ul{margin:8px 0 0 18px;font-size:.93rem;color:#c4cfe8}
+li{margin:4px 0}
+a{color:#8ab4ff}
+.gdacs-item{border-left:3px solid #f59e0b;padding:8px 12px;margin:8px 0;background:#101a2e;border-radius:0 10px 10px 0;font-size:.9rem}
+.gdacs-item small{color:#8ea1cc}
+footer{margin-top:26px;padding:16px;border-top:1px solid #1f3355;font-size:.75rem;color:#8ea1cc}
+.stamp{font-size:.75rem;color:#8ea1cc}
+</style>
+</head>
+<body>
+<header>
+<h1>Recent Floods Near Me — India</h1>
+<div class="sub">Current flood situations, alerts, helplines & safety guidance</div>
+</header>
+<div class="wrap">
+
+<div class="active">
+<h2>🔴 ACTIVE NOW — Chhattisgarh Floods (September 2026)</h2>
+<p>Heavy rain since 25 September has flooded parts of Chhattisgarh — Bastar division worst hit, schools closed in 8 districts plus a statewide holiday, the Sabari river is above its danger mark at Konta (Sukma), and NH-30 is submerged near Jagdalpur. IMD has issued heavy-rain alerts for 13 districts through Sunday.</p>
+<p style="margin-top:8px"><a href="/chhattisgarh-floods-2026/"><b>Full Chhattisgarh flood update — affected areas, helplines, school closures &rarr;</b></a></p>
+</div>
+
+<div class="card">
+<h3>Nepal floods — downstream impact in UP & Bihar</h3>
+<p>The 26 August 2026 flash floods in Nepal (Bhotekoshi/Trishuli rivers) were among the deadliest in the country's history. The Gandak river carried debris and remains downstream into Kushinagar and Maharajganj districts of Uttar Pradesh, and authorities in eastern UP and north Bihar remain on vigil for river levels during the ongoing monsoon withdrawal phase.</p>
+</div>
+
+<h3>Live flood alerts near India (auto-updated)</h3>
+<div id="gdacsList"><p class="stamp">Loading current alerts…</p></div>
+<p class="stamp">Auto-updated from GDACS (Global Disaster Alert and Coordination System) every few hours.</p>
+
+<div class="helpline">
+<h3>☎️ Emergency helplines (India)</h3>
+<ul>
+<li><b>National emergency: 112</b> (police, fire, ambulance — flood rescue included)</li>
+<li>District flood control rooms — check your district administration's official notice</li>
+<li>Always follow your district administration's advisories before travelling in flood-affected areas</li>
+</ul>
+</div>
+
+<h3>Flood safety</h3>
+<p>Do not walk or drive through waterlogged roads — six inches of moving water can knock you down, two feet can float a car. Stay clear of swollen rivers, drains and culverts. See the complete <a href="/flood-safety/">flood safety guide</a>.</p>
+
+<h3>Related safety tools</h3>
+<div class="card">
+<ul>
+<li>🛡️ <a href="https://safealleys.pages.dev/">Safe-Alleys — report and check unsafe areas near you</a></li>
+<li>🌍 <a href="https://earthquakenearme.pages.dev/">Earthquake Near Me — live quake feed for India</a></li>
+<li>🌫️ <a href="https://airqualitynearme.pages.dev/">Air Quality Near Me — live AQI for Indian cities</a></li>
+<li>🌐 <a href="https://bharatlive.pages.dev/">BharatLive — India live ops dashboard</a></li>
+</ul>
+</div>
+
+<footer>
+Information compiled from official advisories and verified news reports (The Hindu, Hindustan Times, The Times of India, ETV Bharat, UN/GDACS). We publish only verified numbers. This is an information service, not an official government source — always follow official advisories. Last updated: 26 September 2026.
+</footer>
+</div>
+<script>
+fetch('/gdacs-data.json').then(function(r){return r.json();}).then(function(d){
+  var el = document.getElementById('gdacsList');
+  var items = d.items || [];
+  if (!items.length){ el.innerHTML = '<p class="stamp">No active flood alerts in the region right now.</p>'; return; }
+  var html = '';
+  for (var i=0;i<Math.min(items.length,10);i++){
+    var it = items[i];
+    html += '<div class="gdacs-item"><b>'+it.title+'</b><br><small>'+it.pubdate+(it.link?' &middot; <a href="'+it.link+'" rel="noopener">source</a>':'')+'</small></div>';
+  }
+  el.innerHTML = html;
+}).catch(function(){
+  document.getElementById('gdacsList').innerHTML = '<p class="stamp">Alerts unavailable — refresh later.</p>';
+});
+</script>
+</body>
+</html>
