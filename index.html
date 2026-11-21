@@ -12,7 +12,7 @@
   gtag('config', 'G-S9LPPYLJNR');
 </script>
 <meta name="robots" content="index,follow">
-<title>Recent Floods Near Me — Live Flood Updates, Alerts & Safety India</title>
+<title>Floods Near Me — Live Flood Alerts in India (Updated Every 6 Hours)</title>
 <meta name="description" content="Current floods in India: active situations, state alerts, helplines and safety. Updated as situations develop.">
 <link rel="canonical" href="https://floodsnearme.pages.dev/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -69,9 +69,9 @@ h3{color:#0369a1}
 <div class="wrap">
 
 <div class="hero">
-<h1>🔴 Chhattisgarh floods — active now</h1>
-<p>Schools closed in 8 districts + statewide holiday (26 Sep) · Sabari river above danger mark at Konta · NH-30 cut near Jagdalpur · IMD heavy-rain alert for 13 districts through Sunday.</p>
-<p style="margin-top:8px"><a href="/chhattisgarh-floods-2026/"><b>See full Chhattisgarh update &rarr;</b></a></p>
+<h1 id="heroTitle">🌊 Flood status in India — live</h1>
+<p id="heroSub">No active GDACS flood alert for India at the last check. This page updates every 6 hours from the UN GDACS feed; the Chhattisgarh September 2026 flooding is kept below as a reference archive.</p>
+<p style="margin-top:8px"><a href="/chhattisgarh-floods-2026/"><b>Chhattisgarh floods (Sep 2026) — full archive &rarr;</b></a></p>
 </div>
 
 <div class="helpline">
@@ -82,14 +82,14 @@ h3{color:#0369a1}
 
 <h3>Is there a flood alert in my state?</h3>
 <div class="state-grid">
-  <div class="state alert">Chhattisgarh ● active</div>
+  <div class="state">Chhattisgarh — normal (Sep event ended)</div>
   <div class="state">Uttar Pradesh — river vigil</div>
   <div class="state">Bihar — river vigil</div>
   <div class="state">Madhya Pradesh — watch</div>
   <div class="state">Maharashtra — normal</div>
   <div class="state">All other states — normal</div>
 </div>
-<p class="stamp">Nepal's 26 August floods continue to affect river levels downstream in eastern UP and north Bihar.</p>
+<p class="stamp" id="stateStamp">State status reflects the last GDACS check — refresh for the latest.</p>
 
 <h3>Live flood alerts near India</h3>
 <div id="gdacsList"><p class="stamp">Loading alerts…</p></div>
@@ -118,6 +118,18 @@ h3{color:#0369a1}
 fetch('/gdacs-data.json').then(function(r){return r.json();}).then(function(d){
   var el = document.getElementById('gdacsList');
   var items = d.items || [];
+  try{
+    var h=document.getElementById('heroTitle'), sub=document.getElementById('heroSub'), st=document.getElementById('stateStamp');
+    if (items.length){
+      h.textContent = '\uD83D\uDD34 Active flood alert \u2014 ' + (items[0].title||'').replace(/^.*?in /,'in ');
+      sub.textContent = items.length + ' active GDACS flood alert(s) for South Asia, last checked ' + (d.last_updated||'') + '. Details below.';
+      if(st) st.textContent = 'Active alert detected in the GDACS feed \u2014 see the live list below.';
+    } else {
+      h.textContent = '\uD83C\uDF0A Flood status in India \u2014 no active alert';
+      sub.textContent = 'No active GDACS flood alert for India at the last check (' + (d.last_updated||'') + '). This page updates every 6 hours from the UN GDACS feed.';
+      if(st) st.textContent = 'Last GDACS check: ' + (d.last_updated||'') + ' \u2014 no active South Asia flood alert.';
+    }
+  }catch(e){}
   if (!items.length){ el.innerHTML = '<p class="stamp">No active flood alerts in the region right now.</p>'; return; }
   var html = '';
   for (var i=0;i<Math.min(items.length,10);i++){
